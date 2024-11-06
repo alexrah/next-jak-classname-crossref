@@ -1,9 +1,22 @@
 import Image from "next/image";
 import styles from "./page.module.css";
+import {styled} from 'next-yak';
 
 export default function Home() {
   return (
     <div className={styles.page}>
+      <header>
+        <Heading>
+          no classname crossref
+        </Heading>
+        <Heading className='solid-variant'>
+          classname .solid-variant
+        </Heading>
+        <Heading>
+          with classname nesting
+          <span className='child-item'>child item</span>
+        </Heading>
+      </header>
       <main className={styles.main}>
         <Image
           className={styles.logo}
@@ -93,3 +106,15 @@ export default function Home() {
     </div>
   );
 }
+
+const Heading = styled.h2`
+  background-color: cyan;
+  
+  &.solid-variant {
+    color: purple;
+  }
+
+  & .child-item {
+    color: red;
+  }
+`
